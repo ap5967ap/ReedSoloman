@@ -205,7 +205,7 @@ def ReedSolomonReceive(b):
     P=cc(1)
     n=cc(1)
     l=int(mu*k)
-    primes.sort(reverse=1)
+    primes.sort(reverse=1) 
     for i in range(l):
         P=P*primes[i]
     for i in range(k):
