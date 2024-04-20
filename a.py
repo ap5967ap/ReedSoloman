@@ -144,15 +144,29 @@ def getkprimes(k, lb, ub,threshold=10):
             s.add(a)
     return primes
 
-M=cc('1'+'0'*17)
-mu=random.random()
+
+def getK(k):
+    primes=[]
+    s=set()
+    a=11
+    while len(primes)<k:
+        if millar_rabin(a,10) and a not in s:
+            primes.append(a)
+            s.add(a)
+        a+=1
+    return primes
+    
+    
+M=cc('1'+'0'*1000)
+mu=0.4
 k=0
 primes=[]
 
 def GlobalSetup(mu,M):
     global k, primes
-    k=16
-    primes=getkprimes(k,cc(gmpy2.isqrt(M)),M-1)
+    k=1000
+    # primes=getkprimes(k,cc(gmpy2.isqrt(M)),M-1)
+    primes=getK(k)
     primes.sort(reverse=1)
 
 def ReedSolomonSend(a):
@@ -225,7 +239,7 @@ def ReedSolomonReceive(b):
     td=tlist[j]
     
     try:
-        if rd%td==0:
+        if (mod(rd,td))==0:
             return rd//td
         else:
             return -1
