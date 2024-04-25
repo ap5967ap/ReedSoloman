@@ -95,8 +95,8 @@ def main():
     GlobalSetup(mu,M)
     a=rand(0,M)
     b=ReedSolomonSend(a)
-    print(a)
+    print(a) #the input message
     # print(mu)
-    print(ReedSolomonReceive(b))
+    print(ReedSolomonReceive(b)) #the output message (-1 if unsuccessful reconstruction)
 
 main()

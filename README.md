@@ -34,6 +34,7 @@ To run for multiple rounds to give accuracy details
   python3 tst.py
 ```
 
+The code returns the reconstructed message if it reconstructs the message correctly else it returns -1;
 
 ## Authors
 
