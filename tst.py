@@ -9,4 +9,4 @@ for i in range(1, tot):
     if num1 == num2:
         count += 1
 
-print(f'{count}/{tot}')
+print(f'{count}/{tot-1}')
