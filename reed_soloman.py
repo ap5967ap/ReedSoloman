@@ -1,16 +1,18 @@
+import math
 import random
 import gmpy2
 from helper import *
 
 #*-------Global Variables-------------
 M=cc('1'+'0'*1000)
-mu=random.random()
+mu=0
 k=0
 primes=[]
 
 def GlobalSetup(mu,M):
     global k, primes
-    k=1000
+    k=cc(gmpy2.log10(M)+5)
+    print(k)
     primes=getK(k)
     primes.sort(reverse=1)
 
@@ -90,13 +92,24 @@ def ReedSolomonReceive(b):
             return -1
     except:
         return -1
-    
-def main():
+
+def pre():
+    global mu,M
+    mu=float(input("Enter mu: \n=> "))
+    M=cc(input("Enter the bound M: Enter 0 for default value of 10^1000\n=> "))
+    if M==0:
+        M=cc('1'+'0'*1000)
     GlobalSetup(mu,M)
-    a=rand(0,M)
-    b=ReedSolomonSend(a)
-    print(a) #the input message
-    # print(mu)
-    print(ReedSolomonReceive(b)) #the output message (-1 if unsuccessful reconstruction)
+    
+
+   
+def main():
+    pre()
+    t=int(input("Enter the number of test cases: \n=> "))
+    for i in range(t):
+        a=cc(input("Enter the message: \n=> "))
+        b=ReedSolomonSend(a)
+        print(f'Message {a} sent') #the input message
+        print(f'Received message {ReedSolomonReceive(b)}') #the output message (-1 if unsuccessful reconstruction)
 
 main()
