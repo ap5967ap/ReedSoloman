@@ -12,7 +12,7 @@ primes=[]
 def GlobalSetup(mu,M):
     global k, primes
     k=cc(gmpy2.log10(M)+5)
-    print(k)
+    #print(k)
     primes=getK(k)
     primes.sort(reverse=1)
 
